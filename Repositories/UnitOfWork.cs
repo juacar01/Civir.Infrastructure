@@ -23,7 +23,7 @@ public class UnitOfWork : IUnitOfWork
         }
         catch (Exception e)
         {
-            throw new Exception("Error en transaccion ");
+            throw new Exception("Error en transaccion ", e);
         }
 
     }
