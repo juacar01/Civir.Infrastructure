@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageId>ProcLog.Civir.Infrastructure</PackageId>
+    <Version>0.0.1</Version>
+    <Authors>Juan Manuel Carreño</Authors>
+    <Company>Procesos Logicos</Company>
+    <Description>Libreria de definiciones para la infrastructura de Civir.</Description>
+    <PackageTags>libreria;dotnet</PackageTags>
+    <RepositoryUrl>https://github.com/juacar01/Civir.Infrastructure.git</RepositoryUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+
+
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="10.0.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="10.0.8">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="10.0.8" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+    <PackageReference Include="ProcLog.Civir.Domain" Version="0.0.1" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.19.1" />
+    <PackageReference Include="System.Security.Cryptography.Xml" Version="10.0.8" />
+  </ItemGroup>
+
+</Project>
