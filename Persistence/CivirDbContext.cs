@@ -1,7 +1,7 @@
 namespace Civir.Infrastructure.Persistence
 {
     using Civir.Domain.Entities;
-    using Civir.Domain.Common   ;
+    using Civir.Domain.Common;
     using Microsoft.EntityFrameworkCore;
 
     public class CivirDbContext : DbContext
@@ -10,29 +10,31 @@ namespace Civir.Infrastructure.Persistence
         {
         }
 
- public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
-    {
-        var entries = ChangeTracker.Entries()
-            .Where(e => e.Entity is BaseDomainModel &&
-                   (e.State == EntityState.Added || e.State == EntityState.Modified));
-        foreach (var entry in entries)
+        public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
-            var entity = (BaseDomainModel)entry.Entity;
-            var now = DateTime.UtcNow;
-            if (entry.State == EntityState.Added)
+            var entries = ChangeTracker.Entries()
+                .Where(e => e.Entity is BaseDomainModel &&
+                       (e.State == EntityState.Added || e.State == EntityState.Modified));
+            foreach (var entry in entries)
             {
-                entity.CreatedAt = now;
+                var entity = (BaseDomainModel)entry.Entity;
+                var now = DateTime.UtcNow;
+                if (entry.State == EntityState.Added)
+                {
+                    entity.CreatedAt = now;
+                }
+                else
+                {
+                    // Preserve the original CreatedAt value on updates
+                    entry.Property(nameof(BaseDomainModel.CreatedAt)).IsModified = false;
+                }
+                entity.UpdatedAt = now;
             }
-            else
-            {
-                // Preserve the original CreatedAt value on updates
-                entry.Property(nameof(BaseDomainModel.CreatedAt)).IsModified = false;
-            }
-            entity.UpdatedAt = now;
+            return base.SaveChangesAsync(cancellationToken);
         }
-        return base.SaveChangesAsync(cancellationToken);
-    }
-        
+
+
+        public DbSet<User>? Users { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

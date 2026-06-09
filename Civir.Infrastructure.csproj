@@ -31,7 +31,7 @@
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="10.0.8" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
-    <PackageReference Include="ProcLog.Civir.Domain" Version="0.0.2" />
+    <PackageReference Include="ProcLog.Civir.Domain" Version="0.0.3" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.19.1" />
     <PackageReference Include="System.Security.Cryptography.Xml" Version="10.0.8" />
   </ItemGroup>
